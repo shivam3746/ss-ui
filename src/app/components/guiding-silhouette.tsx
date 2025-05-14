@@ -11,7 +11,13 @@ const GuidingSilhouette: React.FC<GuidingSilhouetteProps> = ({ imageData, onMeas
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [processing, setProcessing] = useState(false);
 
-  const calculateDistance = (a: any, b: any): number => {
+  type Landmark = {
+    x: number;
+    y: number;
+    z: number;
+    visibility?: number;
+  };
+  const calculateDistance = (a: Landmark, b: Landmark): number => {
     return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
   };
 
